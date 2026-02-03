@@ -6,106 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Trip Planner | Explore the World</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #f39c12;
-            --dark: #1a1a2e;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-       body {
-    /* If the image fails, this dark blue will show instead */
-    background-color: #1a1a2e; 
-    
-    /* Ensure there are no typos in the filename */
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                      url('bh.JPG'); 
-                      
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-    height: 100vh; 
-    color: white; 
-    margin: 0;
-    overflow: hidden;
-}
-
-        /* --- Navigation --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 50px; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px);
-        }
-
-        .logo { font-size: 24px; font-weight: 600; color: var(--primary); letter-spacing: 1px; }
-
-        .auth-buttons button, .auth-buttons a {
-            background: transparent; border: 1px solid white; color: white;
-            padding: 8px 20px; margin-left: 10px; border-radius: 5px; cursor: pointer; transition: 0.3s;
-            text-decoration: none; font-size: 14px;
-        }
-
-        .auth-buttons .login-btn { background: var(--primary); border: none; }
-        .auth-buttons button:hover { opacity: 0.8; transform: translateY(-2px); }
-
-        /* --- Hero Section --- */
-        .hero {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; height: calc(100vh - 80px); text-align: center;
-        }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 40px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-
-        .grid-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; width: 90%; max-width: 1200px;
-        }
-
-        .card {
-            background: var(--glass); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2); padding: 40px 20px;
-            border-radius: 20px; cursor: pointer; transition: 0.4s ease;
-            text-decoration: none; color: white;
-        }
-
-        .card:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-10px); border-color: var(--primary); }
-        .card i { font-size: 40px; margin-bottom: 15px; display: block; font-style: normal; }
-        .card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
-
-        /* --- Modal Styling --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: white; color: #333; padding: 40px; border-radius: 15px;
-            width: 100%; max-width: 400px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .modal-content h2 { margin-bottom: 20px; }
-        .modal-content input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
-        .modal-content button { width: 100%; padding: 12px; background: var(--primary); border: none; color: white; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px; }
-        .close-modal { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 20px; }
-        
-        .modal-link { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .modal-footer { margin-top: 20px; text-align: center; font-size: 14px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
    <nav>
     <div class="logo">MY TRIP PLANNER</div>
   <div class="auth-buttons">
-    <?php if(isset($_SESSION['user']) && isset($_SESSION['email'])): ?>
+    <?php if(isset($_SESSION['user'])): ?>
         <div style="display: flex; align-items: center; gap: 15px;">
             <img src="https://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($_SESSION['email']))); ?>?s=40&d=mp" 
                  alt="Profile" 
                  style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
             
-            <a href="logout.php" style="background: #e74c3c; border:none; margin-left: 0;">Logout</a>
+            <a href="logout.php" style="text-decoration: none;">
+                <button type="button" style="background: #e74c3c; border: none; color: white; padding: 8px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; transition: 0.3s;">
+                    Logout
+                </button>
+            </a>
         </div>
     <?php else: ?>
         <button class="login-btn" onclick="openModal('loginModal')">Log In</button>

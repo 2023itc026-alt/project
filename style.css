@@ -1,4 +1,4 @@
-<style>
+
         :root {
             --primary: #f39c12;
             --dark: #1a1a2e;
@@ -111,4 +111,4 @@
         .modal input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
         .modal button { width: 100%; padding: 10px; background: var(--primary); border: none; color: white; border-radius: 5px; cursor: pointer; }
         .close-btn { float: right; cursor: pointer; font-weight: bold; }
-    </style>
+   
