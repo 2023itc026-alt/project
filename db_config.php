@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "127.0.0.1";
 $user = "root"; // Default XAMPP user
 $pass = "";     // Default XAMPP password is empty
 $dbname = "trip_planner_db";

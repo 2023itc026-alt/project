@@ -106,6 +106,29 @@
                 event.target.style.display = "none";
             }
         }
+// Add this to your existing <script> section
+function validateForm(formType) {
+    const form = document.querySelector(`#${formType}Modal form`);
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if (email === "" || password === "") {
+        alert("Please fill in all fields.");
+        return false;
+    }
+    
+    // Basic email format check
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    return true;
+}
+
+// Update your form tags in index.php to use this:
+// <form action="process.php" method="POST" onsubmit="return validateForm('login')">
     </script>
 </body>
 </html>
