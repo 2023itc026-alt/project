@@ -35,9 +35,27 @@
     <div class="hero">
         <h1>Where to next, Adventurer?</h1>
         <div class="grid-container">
-            <div class="card"><i>📍</i><h3>Travel Planning</h3><p>Essential itineraries and route mapping.</p></div>
-            <div class="card"><i>🚐</i><h3>Vehicles & Guides</h3><p>Meet our certified drivers and luxury fleet.</p></div>
-            <div class="card"><i>🎁</i><h3>Trip Packages</h3><p>Explore curated all-inclusive bundles.</p></div>
+            <a href="planning.php" style="text-decoration: none; color: inherit;">
+    <div class="card">
+        <i>📍</i>
+        <h3>Travel Planning</h3>
+        <p>Essential itineraries and route mapping.</p>
+    </div>
+</a>
+            <a href="vehicles_guides.php" style="text-decoration: none; color: inherit;">
+    <div class="card">
+        <i>🚐</i>
+        <h3>Vehicles & Guides</h3>
+        <p>Meet our certified drivers and luxury fleet.</p>
+    </div>
+</a>
+            <a href="packages.php" style="text-decoration: none; color: inherit;">
+    <div class="card">
+        <i>🎁</i>
+        <h3>Trip Packages</h3>
+        <p>Explore curated all-inclusive bundles.</p>
+    </div>
+</a>
             <div class="card"><i>ℹ️</i><h3>About Us</h3><p>The story behind our travel mission.</p></div>
         </div>
     </div>

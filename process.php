@@ -77,4 +77,32 @@ if (isset($_POST['update_password_submit'])) {
     }
     $stmt->close();
 }
+// --- SAVE TRIP LOGIC ---
+if (isset($_POST['save_trip'])) {
+    $email = $_SESSION['email']; // Get email from session
+    $destination = $_POST['destination'];
+    $travel_date = $_POST['travel_date'];
+    $itinerary = $_POST['itinerary'];
+
+    $stmt = $conn->prepare("INSERT INTO trips (user_email, destination, travel_date, itinerary) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $email, $destination, $travel_date, $itinerary);
+
+    if ($stmt->execute()) {
+        header("Location: planning.php");
+    } else {
+        echo "<script>alert('Error saving plan.'); window.location='planning.php';</script>";
+    }
+    $stmt->close();
+}
+// --- SAVE CUSTOM ACTIVITY ---
+if (isset($_POST['save_custom_activity'])) {
+    $email = $_SESSION['email'];
+    $pkg = $_POST['package'];
+    $activity = $_POST['activity'];
+
+    $stmt = $conn->prepare("INSERT INTO custom_activities (user_email, package_name, activity_text) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $pkg, $activity);
+    $stmt->execute();
+    $stmt->close();
+}
 ?>
